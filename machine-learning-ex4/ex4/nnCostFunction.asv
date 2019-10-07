@@ -46,7 +46,7 @@ A1=sigmoid(A0*Theta1');
 A1=[ones(size(A1,1),1) A1];
 
 h=sigmoid(A1*Theta2');
-%size(h)
+size(h)
 y_act=[];
 
 for i=1:num_labels
@@ -54,8 +54,8 @@ for i=1:num_labels
     y_act(:,end+1)=yi;
 end
 
-%size(y_act)
-loss=-(1/m)*sum(sum(y_act.*log(h)+(1-y_act).*log(1-h)));
+size(y_act)
+loss=-(1/m)*sum(sum(y_act'*log(h)+(1-y_act)'*log(1-h)));
 
 W1=Theta1(:,2:end);
 W1_sum=sum(sum(W1.^2));
@@ -67,8 +67,6 @@ W2_sum=sum(sum(W2.^2));
 regLoss=(lambda/(2*m))*(W1_sum+W2_sum);
 
 J=loss+regLoss;
-
-
 
 
 %
