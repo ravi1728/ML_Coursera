@@ -20,6 +20,17 @@ grad = zeros(size(theta));
 %
 
 
+theta1=theta(2:end);
+
+sqr_diff=(X*theta-y).^2;
+
+J=(1/(2*m))*sum(sqr_diff(:))+(lambda/(2*m))*sum(theta1.^2);
+
+X1=X(:,2:end);
+grad0=(1/m)*sum(X*theta-y);
+grad1=(1/m)*((X*theta-y)'*X1)'+(lambda/m)*(theta1);
+
+grad=[grad0;grad1];
 
 
 
